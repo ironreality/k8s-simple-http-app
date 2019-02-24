@@ -10,7 +10,6 @@
 
 ## Implementation
 
-1. To spin up the needed k8s nodes the next tools are used:
+1. To spin up the k8s cluster the next tools are needed:
   * Hashicorp's [Vagrant](https://www.vagrantup.com/) - to create & provision the nodes as virtual machines
-  * [Bento's](https://github.com/chef/bento) projec't vm templates
   * Oracle's VirtualBox as the Vagrant's provider - to run the virtual mashines
