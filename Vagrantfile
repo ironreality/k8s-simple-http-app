@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
     master.vm.network "private_network", ip: master_ip
     master.vm.provision "shell", path: "k8s-cluster-init.sh"
     config.vm.provider "virtualbox" do |v|
-      v.memory = 4096
+      v.memory = 2048
       v.cpus = 2
     end
   end
@@ -33,8 +33,8 @@ Vagrant.configure(2) do |config|
       node.vm.network "private_network", ip: ip
       node.vm.provision "shell", path: "k8s-cluster-join.sh"
       config.vm.provider "virtualbox" do |v|
-        v.memory = 2048
-        v.cpus = 1
+        v.memory = 1024
+        v.cpus = 2
       end
     end
   end
