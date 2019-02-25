@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: List
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: helloworld-http
+    name: helloworld-http
+  spec:
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: helloworld-http
+    type: NodePort
+
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app: helloworld-http
+    name: helloworld-http
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: helloworld-http
+    template:
+      metadata:
+        labels:
+          app: helloworld-http
+      spec:
+        containers:
+        - name: helloworld-http
+          image: strm/helloworld-http
+          ports:
+          - containerPort: 80
