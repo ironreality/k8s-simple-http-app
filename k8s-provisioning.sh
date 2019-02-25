@@ -17,6 +17,11 @@ apt-get install -y kubelet kubeadm kubectl || { echo "Can't install the Kubernet
 echo "Disabling swap in order to run kubelet..."
 swapoff -a && sed -i '/ swap / s/^/#/' /etc/fstab || { echo "Can't disable swap! Exiting..."; exit 1; }
 
+ipaddr=$(ifconfig eth1 | grep -i Mask | awk '{print $2}'| cut -f2 -d:)
+echo "Configuring Kubelet to run on the private network interface..."
+cat > /etc/default/kubelet<<EOF
+KUBELET_EXTRA_ARGS=--node-ip=${ipaddr}
+EOF
 
 
 echo "Populating bashrc..."
