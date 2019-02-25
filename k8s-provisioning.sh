@@ -63,6 +63,13 @@ alias sy='systemctl '
 alias t='top'
 alias v='vim'
 
+alias k='kubectl'
+alias kclusterinfo='kubectl cluster-info'
+alias kcontextinfo='kubectl config current-context'
+
+alias kaf='kubectl apply -f'
+alias kdf='kubectl delete -f'
+
 # show logs for pod-pattern
 kl() {
         opts=
