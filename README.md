@@ -2,14 +2,37 @@
 
 ## Prerequisites
 
-1. Kubernetes installed via kubeadm.
-2. The cluster consists from two nodes.
-3. A simple HTTP app deployed into the cluster as a replica set with two pods.
-4. Nginx is used as ingress to access the app.
-5. We have possibility to capture the app's traffic from a separate pod.
+To spin up the k8s cluster the next tools have to be installed:
+  * Hashicorp's [Vagrant](https://www.vagrantup.com/), version >= 2.2 - to create & provision the nodes as virtual machines
+  * Oracle's VirtualBox, version 5.1 as the Vagrant's provider - to run the virtual mashines
 
-## Implementation
 
-1. To spin up the k8s cluster the next tools are needed:
-  * Hashicorp's [Vagrant](https://www.vagrantup.com/) - to create & provision the nodes as virtual machines
-  * Oracle's VirtualBox as the Vagrant's provider - to run the virtual mashines
+## Network topology
+
+The cluster is being launched in a private (host-only) Virtualbox network. It's eth1 interface on the cluster's vms.
+
+### IP addresses
+
+* master - 172.28.128.2
+* node1 - 172.28.128.3
+* node2 - 172.28.128.4
+
+
+## Usage
+
+Launch the k8s cluster
+```
+vagrant up
+```
+
+SSHing into the cluster's node
+```
+vagrant ssh [master|node1|node2]
+```
+
+Get list of the cluster's hosts:
+```
+vagrant ssh master
+sudo su -
+kubectl get nodes
+```
