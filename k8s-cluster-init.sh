@@ -9,21 +9,16 @@ nodename=$(hostname -s)
 
 echo "Initializing k8s cluster with kubeadm..."
 # --ignore-preflight-errors=SystemVerification - ignore 'Docker 18.09 is non-validated' error
-# --pod-network-cidr=10.244.0.0/16 - required for further Flannel installation
-kubeadm init --ignore-preflight-errors=SystemVerification --apiserver-advertise-address="${ipaddr}" --node-name "${nodename}" --pod-network-cidr=10.244.0.0/16 || { echo "Can't initialize the Kubernetes cluster! Exiting..."; exit 1; }
+# --pod-network-cidr=192.168.0.0/16 - required for further Calico installation
+kubeadm init --ignore-preflight-errors=SystemVerification --apiserver-advertise-address="${ipaddr}" --node-name "${nodename}" --pod-network-cidr=192.168.0.0/16 || { echo "Can't initialize the Kubernetes cluster! Exiting..."; exit 1; }
 
 
 echo "Creating kubectl config for user: $(id) ..."
 mkdir -p $HOME/.kube && cp -i /etc/kubernetes/admin.conf $HOME/.kube/config || { echo "Can't copy the kubectl config! Exiting..."; exit 1; }
 
-
-echo "Installing Flannel pod network..."
-cat >> /etc/sysctl.conf<<EOF
-net.bridge.bridge-nf-call-iptables = 1
-EOF
-sysctl -p
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml || { echo "Can't install Flannel network! Exiting..."; exit 1; }
-
+echo "Installing Calico pod network..."
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml || { echo "Can't install Calico RBAC! Exiting..."; exit 1; }
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml || { echo "Can't install Calico! Exiting..."; exit 1 }
 
 echo "Saving the cluster join token to ${token_path}..."
 kubeadm token list  | awk '/^[^TOKEN]/{ print $1 }' > "${token_path}" || { echo "Can't save the join token! Exiting..."; exit 1; }
