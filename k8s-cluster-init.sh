@@ -18,7 +18,7 @@ mkdir -p $HOME/.kube && cp -i /etc/kubernetes/admin.conf $HOME/.kube/config || {
 
 echo "Installing Calico pod network..."
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml || { echo "Can't install Calico RBAC! Exiting..."; exit 1; }
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml || { echo "Can't install Calico! Exiting..."; exit 1 }
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml || { echo "Can't install Calico! Exiting..."; exit 1; }
 
 echo "Saving the cluster join token to ${token_path}..."
 kubeadm token list  | awk '/^[^TOKEN]/{ print $1 }' > "${token_path}" || { echo "Can't save the join token! Exiting..."; exit 1; }
