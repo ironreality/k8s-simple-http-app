@@ -15,8 +15,6 @@ The cluster is being launched in a private (host-only) Virtualbox network. It's 
 
 * master - 172.28.128.2
 * node1 - 172.28.128.3
-* node2 - 172.28.128.4
-
 
 ## Usage
 
@@ -27,7 +25,7 @@ vagrant up
 
 SSHing into the cluster's node
 ```
-vagrant ssh [master|node1|node2]
+vagrant ssh [master|node1]
 ```
 
 Get list of the cluster's hosts:
