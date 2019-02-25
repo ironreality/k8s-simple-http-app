@@ -16,6 +16,9 @@ kubeadm init --ignore-preflight-errors=SystemVerification --apiserver-advertise-
 echo "Creating kubectl config for user: $(id) ..."
 mkdir -p $HOME/.kube && cp -i /etc/kubernetes/admin.conf $HOME/.kube/config || { echo "Can't copy the kubectl config! Exiting..."; exit 1; }
 
+echo "Allowing pods running on master..."
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
 echo "Installing Calico pod network..."
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml || { echo "Can't install Calico RBAC! Exiting..."; exit 1; }
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml || { echo "Can't install Calico! Exiting..."; exit 1; }

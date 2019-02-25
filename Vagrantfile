@@ -5,7 +5,7 @@ master_ip = "172.28.128.2"
 
 nodes = {
 	"node1" => "172.28.128.3",
-	"node2" => "172.28.128.4"
+	#"node2" => "172.28.128.4"
 }
 
 Vagrant.configure(2) do |config|
