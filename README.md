@@ -7,15 +7,19 @@ To spin up the k8s cluster the next tools have to be installed:
   * Oracle's VirtualBox, version 5.1 as the Vagrant's provider - to run the virtual mashines.
 
 
-## Testing platform
+### Testing platform
   * a PC workstation with 4xCPU / 8 GB RAM / 256 GB SSD
 
+### Testing application
 
-## Network topology
+Simple http 'hello world' for load balancer testing - taken [here](https://hub.docker.com/r/strm/helloworld-http)
+
+
+### Network topology
 
 The cluster is being launched in a private (host-only) Virtualbox network. It's eth1 interface on the cluster's vms.
 
-### IP addresses
+#### IP addresses
 
 * master - 172.28.128.2
 * node1 - 172.28.128.3
