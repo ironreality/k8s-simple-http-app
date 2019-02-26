@@ -1,4 +1,5 @@
 #!/bin/bash
+# The script provisiones a Ubuntu 16.04 host with soft&configs needed to run K8s cluster
 
 echo "Installing auxiliary utils..."
 apt-get update && apt-get install -y apt-transport-https curl

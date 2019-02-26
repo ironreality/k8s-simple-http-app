@@ -1,4 +1,6 @@
 #!/bin/bash
+# The script outputs current pod-node placement.
+# By default it filters the pods labeled "app=helloworld-http"
 
 podlabel=${1:-helloworld-http}
 

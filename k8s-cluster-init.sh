@@ -1,4 +1,8 @@
 #!/bin/bash
+# The script does the next:
+# 1. initializes the k8s master node with kubeadm
+# 2. installs Calico pod network
+# 3. saves the cluster join token info into /vagrant shared folder
 
 token_path=/vagrant/k8s_token
 discovery_token_path=/vagrant/k8s_discovery_token

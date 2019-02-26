@@ -1,4 +1,6 @@
 #!/bin/bash
+# The script joins a worker node to the cluster master
+# The joining token info should be written into /vagrant folder
 
 token_path=/vagrant/k8s_token
 discovery_token_path=/vagrant/k8s_discovery_token

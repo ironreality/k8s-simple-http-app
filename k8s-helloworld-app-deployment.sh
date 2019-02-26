@@ -1,4 +1,5 @@
 #!/bin/bash
+# The script deploys a simple web application along with needed services and a Nginx-based ingress
 
 k8s_config_dir=/vagrant/k8s-configs
 

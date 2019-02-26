@@ -1,4 +1,5 @@
 #!/bin/bash
+# The script deploys a tcpdump-stuffed pod into k8s
 
 k8s_config_dir=/vagrant/k8s-configs
 
