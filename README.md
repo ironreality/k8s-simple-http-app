@@ -98,4 +98,3 @@ Now you can ssh into sniffer-pod pod and read all network traffic with commands:
 # kubectl exec -it sniffer-pod sh
 $ tcpdump -r /data/dump*
 ```
-```
