@@ -57,7 +57,7 @@ Now you can access the app's pods with such query:
 curl -k https://172.28.128.2:32377/
 ```
 
-Checing the pods placement:
+Checking the pods placement:
 ```
 root@master:~# /vagrant/k8s-check-pod-node-affinity.sh 
 
@@ -71,6 +71,7 @@ helloworld-http-6d6ff59b6d-vp799        node2
 Checking the load balancing works correctly:
 ```
 vagrant@master:~$ exit
+
 $ curl -k https://172.28.128.2:32377/
 <html><head><title>HTTP Hello World</title></head><body><h1>Hello from helloworld-http-6d6ff59b6d-vp799</h1></body></html
 
