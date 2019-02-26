@@ -83,3 +83,19 @@ $ curl -k https://172.28.128.3:32377/
 <html><head><title>HTTP Hello World</title></head><body><h1>Hello from helloworld-http-6d6ff59b6d-cg76w</h1></body></html
 ```
 
+### Traffic capturing
+
+Deploying a sniffering pod running tcpdump inside (the [image](https://hub.docker.com/r/corfr/tcpdump/)):
+```
+root@master:~# /vagrant/k8s-sniffer-deployment.sh
+Deploying a sniffer pod into host network...
+pod/sniffer-pod created
+...
+```
+
+Now you can ssh into sniffer-pod pod and read all network traffic with commands:
+```
+# kubectl exec -it sniffer-pod sh
+$ tcpdump -r /data/dump*
+```
+```

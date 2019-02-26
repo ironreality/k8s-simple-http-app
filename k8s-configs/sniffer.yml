@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sniffer-pod
+  labels:
+    app: sniffer-pod
+spec:
+  hostNetwork: true
+  #restartPolicy: Always
+  containers:
+  - name: sniffer
+    image: corfr/tcpdump
+    args: ["-i", "any", "-nn", "-C 1000", "-W 100", "-w", "/data/dump"]
