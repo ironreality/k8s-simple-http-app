@@ -26,7 +26,7 @@ The cluster is being launched in a private (host-only) Virtualbox network. It's 
 
 ## Workflow
 
-Launch the k8s cluster - it takes up to 10 minutes on the testing platform:
+Launching the k8s cluster - it takes up to 10 minutes on the testing platform:
 ```
 vagrant up
 ```
@@ -69,7 +69,7 @@ Checking the placement for pods with with label: helloworld-http ...
 
 POD NAME                                NODE NAME
 helloworld-http-6d6ff59b6d-cg76w        master
-helloworld-http-6d6ff59b6d-vp799        node2
+helloworld-http-6d6ff59b6d-vp799        node1
 ```
 
 Checking the load balancing works correctly:
