@@ -4,7 +4,9 @@
 k8s_config_dir=/vagrant/k8s-configs
 
 echo "Creating simple HTTP web application..."
-kubectl apply -f ${k8s_config_dir}/helloworld.yml
+kubectl apply -f ${k8s_config_dir}/helloworld-pod.yml
+kubectl apply -f ${k8s_config_dir}/helloworld-rs.yml
+kubectl apply -f ${k8s_config_dir}/helloworld-service.yml
 
 echo "Deploying Nginx ingress controller..."
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml && \
