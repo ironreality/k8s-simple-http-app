@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: helloworld-http
+  labels:
+    app: helloworld-http
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: helloworld-http
+  template:
+    metadata:
+      labels:
+        app: helloworld-http
+    spec:
+      containers:
+      - name: helloworld-http
+        image: strm/helloworld-http
+        

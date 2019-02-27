@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helloworld-http
+  labels:
+    app: helloworld-http
+spec:
+  containers:
+  - name: helloworld-http
+    image: strm/helloworld-http
+    ports:
+    - containerPort: 80
